@@ -11,7 +11,7 @@ import (
 func New(db *sql.DB) *gin.Engine {
 	r := gin.Default()
 
-	dictTypeHandler := &handler.DictionaryTypeHandler{DB: db}
+	dictTypeHandler := &handler.DictionaryTypesHandler{DB: db}
 
 	v1 := r.Group("/api/v1")
 	{

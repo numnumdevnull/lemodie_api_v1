@@ -10,13 +10,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type DictionaryTypeHandler struct {
+type DictionaryTypesHandler struct {
 	DB *sql.DB
 }
 
 var allowedLimits = map[int]bool{10: true, 20: true, 50: true}
 
-func (h *DictionaryTypeHandler) GetAll(c *gin.Context) {
+func (h *DictionaryTypesHandler) GetAll(c *gin.Context) {
 	// --- парсимо page ---
 	page, err := strconv.Atoi(c.DefaultQuery("page", "1"))
 	if err != nil || page < 1 {
@@ -53,9 +53,9 @@ func (h *DictionaryTypeHandler) GetAll(c *gin.Context) {
 	}
 	defer rows.Close()
 
-	items := make([]model.DictionaryType, 0)
+	items := make([]model.DictionaryTypes, 0)
 	for rows.Next() {
-		var item model.DictionaryType
+		var item model.DictionaryTypes
 		if err := rows.Scan(&item.ID, &item.Value, &item.Meta); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "scan failed"})
 			return
@@ -65,7 +65,7 @@ func (h *DictionaryTypeHandler) GetAll(c *gin.Context) {
 
 	totalPages := (total + limit - 1) / limit
 
-	c.JSON(http.StatusOK, model.PaginatedResponse[model.DictionaryType]{
+	c.JSON(http.StatusOK, model.PaginatedResponse[model.DictionaryTypes]{
 		Data:       items,
 		Total:      total,
 		Page:       page,

@@ -1,6 +1,6 @@
 package model
 
-type DictionaryType struct {
+type DictionaryTypes struct {
 	ID    uint64  `json:"id"`
 	Value string  `json:"value"`
 	Meta  *string `json:"meta"`
