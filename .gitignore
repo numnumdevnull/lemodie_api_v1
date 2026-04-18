@@ -1,0 +1,45 @@
+# ======================
+# Node.js
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build
+dist/
+build/
+
+# ======================
+# Go
+# ======================
+bin/
+*.exe
+*.out
+*.test
+
+# Go modules cache (не нужно в git)
+vendor/
+
+# ======================
+# Env files (ВАЖНО)
+# ======================
+.env
+.env.local
+.env.development
+.env.production
+
+# ======================
+# OS / Editor
+# ======================
+.DS_Store
+.vscode/
+.idea/
+
+# ======================
+# Logs
+# ======================
+logs/
+*.log
+
+tmp/
